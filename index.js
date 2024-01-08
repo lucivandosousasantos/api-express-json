@@ -37,7 +37,7 @@ app.put("/produtos/:id", async (req, res) => {
   const index = produtos.findIndex((item) => item.id == id)
   produtos[index] = {...produtos[index], ...data}
   console.log(produtos[index])
-  // fs.writeFileSync("db.json", JSON.stringify(produtos))
+  fs.writeFileSync("db.json", JSON.stringify(produtos))
   res.status(200).send("Produto atualizado com sucesso.")
 })
 
