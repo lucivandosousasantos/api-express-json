@@ -8,7 +8,7 @@ app.use(express.json())
 const port = process.env.PORT || 3000
 
 app.get("/", (req, res) => {
-  res.send("API Express")
+  res.send("API CRUD com express e persistência de dados em JSON")
 })
 
 app.get("/produtos", async (req, res) => {
@@ -36,7 +36,6 @@ app.put("/produtos/:id", async (req, res) => {
   const produtos = await JSON.parse(fs.readFileSync("db.json"))
   const index = produtos.findIndex((item) => item.id == id)
   produtos[index] = {...produtos[index], ...data}
-  console.log(produtos[index])
   fs.writeFileSync("db.json", JSON.stringify(produtos))
   res.status(200).send("Produto atualizado com sucesso.")
 })
