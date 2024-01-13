@@ -46,7 +46,7 @@ app.delete("/produtos/:id", async (req, res) => {
   const index = produtos.findIndex((item) => item.id == id)
   produtos.splice(index, 1)
   fs.writeFileSync("db.json", JSON.stringify(produtos))
-  res.status(200).send("Produto excluído com sucesso.")
+  res.status(204).send("Produto excluído com sucesso.")
 })
 
 app.listen(port, () => console.log(`Server listening on port ${port}`))
